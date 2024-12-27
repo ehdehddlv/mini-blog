@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PostListItem from './PostListItem';
+import PostFaqListItem from './PostFaqListItem';
 
 const Wrapper = styled.div`
     display: flex;
@@ -8,33 +8,36 @@ const Wrapper = styled.div`
     align-items: flex-start;
     justify-content: center;
 
-    & > * {
-        :not(:last-child){
-            margin-bottom: 16px;
-        }
-    }
+    // & > * {
+    //     :not(:last-child){
+    //         margin-bottom: 16px;
+    //     }
+    // }
 `;
 
-function PostList(props){
-    const {posts, onClickItem} = props;
+function PostFaqList(props){
+    const {posts, onClickItem, onChangeItem} = props;
+    // const {posts} = props;
 
-    console.log("PostList -> posts : ", posts);
+    console.log("PostFaqList -> posts : ", posts);
 
     return (
         <Wrapper>
             {posts.map((post, index) => {
                 return (
-                    <PostListItem
-                        key={post.id}
+                    <PostFaqListItem
+                        key={post.faqItemSeqn}
                         post={post}
                         onClick={() => {
                             onClickItem(post);
                         }}
+                        onChange={onChangeItem}
                     />
                 );
             })}
         </Wrapper>
     );
+
 }
 
-export default PostList;
+export default PostFaqList;
